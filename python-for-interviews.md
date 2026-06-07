@@ -290,6 +290,94 @@ for val in myMap.values):
 for key,val in myMap.items():
     print(key,val)
 
+#Tuples. Tuples are just like arrays, but they are immutable
+
+tup = (1,2,3)
+
+print(tup[0])
+
+cant do the following:
+
+tup[0] = 3
+
+***Tuples are typicall used as keys for hashmap/hashset***
+
+myMap = { (1,2): 3}
+print(myMap[(1,2)])
+
+myset = set()
+myset.add((1,2))
+print((1,2) in mySet)
+
+# The reason we do this is because lists cant be keys, ONLY tuples can be keys for hashmaps and hashsets
+
+#Heaps! ***Heaps are automatically minheaps by default***
+import heapq
+
+minHeap = []
+
+heapq.heappush(minHeap,3)
+heapq.heappush(minHeap,2)
+heapq.heappush(minHeap,4)
+
+# Min value is always at zero
+minHeap[0] # would return the min value 2
+
+# We can do this because we are modifying the length in the while loop, thats how the loop decrements 
+while len(minHeap):
+    print(heapq.heappop(minHeap))
+
+# The workaround for max heap is to multiple each element by a -1
+
+maxHeap = []
+
+heapq.heappush(maxHeap,3 * -1)
+heapq.heappush(maxHeap,2 * -1)
+heapq.heappush(maxHeap,4 * -1)
+
+print(-1 * maxHeap[0])
+
+***You can also build heap from initial values***
+
+arr = [2,1,8,4,5]
+heapq.heapify(arr)
+while arr:
+    print(heapq.heappop(arr))
+
+# Functions 
+
+def myFunc(n,m):
+    print(n)
+
+# Nested functions have access to outer Variables
+
+def outer(a,b):
+    c = "c"
+    
+    def inner():
+        return a + b + c
+    return inner()
+
+print(outer("a","b")) # prints abc
+
+# can modify objects, but not reassign
+
+def double(arr,val):
+    def helper():
+        for i,n in emumerate(arr):
+            arr[i] *= 2
+    
+        #doing val *= 2 will ONLY change the local scope
+        #to modify it outside, you should do 
+        nonlocal val
+        val *= 2
+    helper()
+    print(arr,val)
+
+nums = [1,2]
+val = 3
+double(nums,val)
+
 
 
 
