@@ -5,7 +5,7 @@ class Solution:
         words = {}
         for word in strs:
             sorted_word = "".join(sorted(word))
-
+            # can easily check if something is a KEY in a hashmap
             if sorted_word not in words:
                 words[sorted_word] = []
 
