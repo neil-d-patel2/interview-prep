@@ -23,6 +23,20 @@ Input: nums = [1,2,1,2,1,2,3,1,3,2], k = 2
 Output: [1,2]
 
 '''
+# Syntax Notes:
+
+'''
+- can extract tuples from hashmaps, just iterate using h.items()
+
+- use sorted on tuples 
+
+- .sort is meant for the list class and is nlgn time, thats why sorted is for most other data structures 
+
+- sorted returns a completely new object, .sort modifies the object that it was called with and doesnt return anything
+
+- can access tuples in a list using 2d array notation, eg, first element of the first tuple in a list can be accessed using my_tuple_list[0][0] 
+'''
+
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
