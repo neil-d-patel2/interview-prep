@@ -20,7 +20,7 @@ Output: [0,0,9,0,0]
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         
-        final_list = []
+        final_list = [1] * (len(nums))
 
         prefix = 1
         for i in range(len(nums)):
