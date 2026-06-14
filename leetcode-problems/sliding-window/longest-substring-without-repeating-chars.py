@@ -29,27 +29,17 @@ s may consist of printable ASCII characters.
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if len(s) < 2:
-            return len(s)
-
-        L = 0
-        R = L + 1
         sset = set()
-        sset.add(s[L])
-        maxLen = 1
+        L = 0
+        maxLen = 0
 
-        while R < len(s):
-            if s[R] not in sset:
-                sset.add(s[R])
-                R += 1
-                if len(sset) > maxLen:
-                    maxLen = len(sset)
-            else:
+        for _ in range(len(s)):
+            while s[R] in sset:
+                sset.remove(s[L])
                 L += 1
-                R = L + 1
-                sset.clear()
-                sset.add(s[L])
-
+            
+            sset.add(s[R])
+            maxlen = max(maxLen, R - L + 1)
 
         return maxLen
 
