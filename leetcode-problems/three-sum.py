@@ -40,8 +40,7 @@ Constraints:
 
 '''
 
-
-uclass Solution:
+class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
     
        '''
@@ -52,15 +51,17 @@ uclass Solution:
         '''
         h = {}
         out = []
-        L = 0
-        R = (len(nums))
-
         nums.sort()
+        s = set()
         ''' [-4,-1,-1,0,1,2]'''
 
         for i in range(len(nums)):
-            R -= 1 
-            L = 0
+            if nums[i] in s:
+                continue
+            else:
+                s.add(nums[i])
+            R = len(nums) - 1
+            L = i + 1
             target = nums[i] * -1 
             while L < R:   
                 if nums[L] + nums[R] < target:
@@ -68,12 +69,14 @@ uclass Solution:
                 elif nums[L] + nums[R] > target:
                     R -= 1
                 else:
-                    out.append([nums[i],nums[L],nums[R]])
-                     
+                    if (nums[i],nums[L],nums[R]) not in s:
+                        s.add((nums[i],nums[L],nums[R]))
+                        out.append([nums[i],nums[L],nums[R]])
                     
-
+                    L += 1
         return out
  
+  
  
 
 
