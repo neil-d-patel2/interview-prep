@@ -6,37 +6,33 @@
 
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        if head == null:
-            return []
-
-        cur = head 
-        count = 1
-
-        while cur.next:
-            cur = cur.next 
-            count += 1
+        
+          cur = head
+        length = 0
+        while cur:
+            cur = cur.next
+            length += 1
         
         cur = head
-        for i in range(count // 2):
+        length = length // 2
+        for i in range(length):
             cur = cur.next
-
-        # head is the beginning of the list 
-        # cur is the middle of the list, need to reverse it 
-
-        prev = None
-        while cur:
-            temp = cur.next
-            cur.next = prev
-            prev = cur
-            cur = temp
         
-        # now, cur is the head of the reverse linked list
-        out = []
-        while head and cur:
-            out.append(head.val)
-            out.append(cur.val)
-            continue
+        l1 = head
+        l2 = cur
+
+        while l1.val != cur.val and l2:
+            temp1 = l1.next
+            l1.next = l2
+            l1 = temp1
+            temp2 = l2.next
+            l2.next = temp1
+            l2 = temp2
+
+
+
         
+
         
         
 
