@@ -7,7 +7,7 @@
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
         
-          cur = head
+        cur = head
         length = 0
         while cur:
             cur = cur.next
@@ -15,7 +15,7 @@ class Solution:
         
         cur = head
         length = length // 2
-        for i in range(length):
+        for _ in range(length):
             cur = cur.next
         
         l1 = head
