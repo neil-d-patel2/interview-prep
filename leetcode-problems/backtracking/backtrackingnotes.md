@@ -9,5 +9,4 @@ The easiest way to understand backtracking is to understand the subsets problem 
 
 Given an integer array nums of unique elements, return all possible subsets. The solution must not contain duplicate subsets. 
 
-
-
+Typicall (when appending to the result array in backtracking), you want to do something like out.append(path.copy()), because you want a local copy, you dont want a reference to the path array because it will end up changing, you simpy want again, a local COPY of what path is at that instance. 
