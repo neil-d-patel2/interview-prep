@@ -1,19 +1,23 @@
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-
         out = []
         nums.sort()
 
-        def backtrack(i, path):
-            out.append(path)
+        def backtrack(idx, path):
 
-            for j in range(i, len(nums)):
-                if j > i and nums[j] == nums[j-1]:
-                    continue
+            out.append(path.copy())
 
-                path.append(nums[j]):
-                backtrack(j+1, path)
+            for i in range(idx, len(nums)):
+                if i > idx and nums[i] == nums[i-1]:
+                    continue 
+                
+                path.append(nums[i])
+                backtrack(i + 1, path)
                 path.pop()
 
+            
         backtrack(0, [])
-        return out
+        return out        
+
+ 
+

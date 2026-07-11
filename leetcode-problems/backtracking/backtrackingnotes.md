@@ -10,3 +10,27 @@ The easiest way to understand backtracking is to understand the subsets problem 
 Given an integer array nums of unique elements, return all possible subsets. The solution must not contain duplicate subsets. 
 
 Typicall (when appending to the result array in backtracking), you want to do something like out.append(path.copy()), because you want a local copy, you dont want a reference to the path array because it will end up changing, you simpy want again, a local COPY of what path is at that instance. 
+
+Pattern:
+
+def backtrack(state, choices, path, result):
+    # 1. Base Case / Goal Met
+    if is_solution(state):
+        result.append(list(path)) # Store a copy of the valid solution
+        return
+
+    # 2. Iterate through available options
+    for choice in choices:
+        # 3. Apply Constraints (Pruning)
+        if not is_valid(choice, state):
+            continue
+        
+        # 4. Make Choice
+        make_choice(choice, state, path)
+        
+        # 5. Explore Next Level
+        backtrack(state, choices, path, result)
+        
+        # 6. Undo Choice (The Backtrack Step)
+        undo_choice(choice, state, path)
+
