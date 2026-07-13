@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
@@ -9,8 +11,9 @@ class Solution:
             return (1 + dfs(r + 1, c) + dfs(r, c + 1) +  dfs(r, c - 1) + dfs(r - 1, c))
             
         out = 0 
-        for r in ROWS:
-            for c in COLS:
+        for r in range(ROWS):
+            for c in range(COLS):
                 if (dfs(r, c)) > 1:
                     out += 1
+        
         return out 

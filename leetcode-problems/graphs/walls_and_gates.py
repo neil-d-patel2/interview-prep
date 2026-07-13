@@ -1,3 +1,7 @@
+from collections import deque
+from typing import List
+
+
 class Solution:
     def islandsAndTreasure(self, grid: List[List[int]]) -> None:
         ROWS, COLS = len(grid), len(grid[0])
@@ -19,7 +23,7 @@ class Solution:
 
         dist = 0 
         while q:
-            for i in range(len(q)):
+            for _ in range(len(q)):
                 r, c = q.popleft()
                 grid[r][c] = dist
                 addCell(r + 1, c)
