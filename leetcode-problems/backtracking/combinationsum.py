@@ -9,7 +9,6 @@ class Solution:
                 out.append(path.copy())
                 return
             for i in range(index,len(nums)):
-                
                 if sum(path) + nums[i] > target:
                     return
                 path.append(nums[i])

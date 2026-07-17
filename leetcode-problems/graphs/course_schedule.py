@@ -6,29 +6,25 @@ class Solution:
         preMap = {i: [] for i in range(numCourses)}
         for crs, pre in prerequisites:
             preMap[crs].append(pre)
-             
-        ''' maps a number to its prerequisites'''
-        visiting = set()
+        visited = set()
+
         def dfs(crs):
             if preMap[crs] == []:
                 return True
-            if crs in visiting:
+            if crs in visited:
                 return False
-            
-            visiting.add(preMap[crs])
-            for node in preMap[crs]:
-                if not dfs(node):
+            visited.add(crs)
+            for neighbor in preMap[crs]:
+                if not dfs(neighbor):
                     return False
-            visiting.remove(preMap[crs])
-            '''the line below this is really important, it essentially guarantees that a specific node's path is only traversed once'''
-            preMap[crs] = [] 
+            visited.remove(crs)
+            preMap[crs] = []
             return True
 
-
-        for crs in range(len(prerequisites)):
-            if not dfs(crs):
+        for c in range(len(prerequisites)):
+            if not dfs(c):
                 return False
 
         return True
-        
-            
+
+
